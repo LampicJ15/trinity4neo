@@ -47,6 +47,12 @@ public class HttpClientProcedures {
 
 
   @Procedure(value = "tnt.http.put", mode = Mode.READ)
+  @Description("""
+      Procedure sends a PUT request using the Java Http Client and retrieves the response.
+      In the configuration map we can specify the following parameters:
+      - failOnError <true>: if we wish to throw an exception if the request fails
+      - httpVersion <2>: specify the Http protocol version, possible values are 1.1 and 2
+      """)
   public Stream<HttpResponseResult> sendPut(@Name("uri") String uri,
                                             @Name(value = "headers", defaultValue = "{}")
                                                 Map<String, String> headers,
@@ -65,6 +71,12 @@ public class HttpClientProcedures {
             httpConfig.isFailOnError()));
   }
 
+  @Description("""
+      Procedure sends a GET request using the Java Http Client and retrieves the response.
+      In the configuration map we can specify the following parameters:
+      - failOnError <true>: if we wish to throw an exception if the request fails
+      - httpVersion <2>: specify the Http protocol version, possible values are 1.1 and 2
+      """)
   @Procedure(value = "tnt.http.get", mode = Mode.READ)
   public Stream<HttpResponseResult> sendGet(@Name("uri") String uri,
                                             @Name(value = "headers",
@@ -85,6 +97,12 @@ public class HttpClientProcedures {
   }
 
   @Procedure(value = "tnt.http.delete", mode = Mode.READ)
+  @Description("""
+      Procedure sends a DELETE request using the Java Http Client and retrieves the response.
+      In the configuration map we can specify the following parameters:
+      - failOnError <true>: if we wish to throw an exception if the request fails
+      - httpVersion <2>: specify the Http protocol version, possible values are 1.1 and 2
+      """)
   public Stream<HttpResponseResult> sendDelete(@Name("uri") String uri,
                                                @Name(value = "headers", defaultValue = "{}")
                                                    Map<String, String> headers,
